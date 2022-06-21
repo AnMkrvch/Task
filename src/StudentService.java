@@ -15,6 +15,7 @@ public class StudentService {
         listOfStudents.forEach(x-> System.out.println(x.getSurname() + " " + x.getName()));
     }
 
+
     public List<Student> findFacultyEF(){
        return studentGateway.getStudents().stream()
                .filter(x-> x.getFaculty().equals("EF"))
