@@ -1,11 +1,11 @@
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class Student {
    private  String name;
     private String surname;
     private String patronymic;
-    private Date birthday;
+    private LocalDate birthday;
     private String faculty;
     private double GPA;
     private String type;
@@ -19,7 +19,7 @@ public class Student {
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
     }
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
     public void setFaculty(String faculty) {
@@ -40,7 +40,7 @@ public class Student {
     public String getPatronymic() {
         return patronymic;
     }
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
     public String getFaculty() {

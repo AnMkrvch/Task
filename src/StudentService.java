@@ -1,39 +1,53 @@
+import java.io.File;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class StudentService {
 
-    void printFacultyEF(List<Student> listOfStudents){
-       listOfStudents.stream()
-               .filter(x-> x.getFaculty().equals("EF"))
-               .forEach(l-> System.out.println(l.getSurname()+ " " +  l.getName() ));
+    private final StudentGateway studentGateway;
+
+    public StudentService (File file){
+        this.studentGateway = new StudentGateway(file);
     }
-    List<String> findSurname (List<Student> listOfStudents){
-        return listOfStudents.stream()
+
+    public void printStudents(List<Student>listOfStudents){
+        listOfStudents.forEach(x-> System.out.println(x.getSurname() + " " + x.getName()));
+    }
+
+    public List<Student> findFacultyEF(){
+       return studentGateway.getStudents().stream()
+               .filter(x-> x.getFaculty().equals("EF"))
+               .collect(Collectors.toList());
+    }
+
+    public List<String> findSurname (){
+        return studentGateway.getStudents().stream()
                 .map(Student::getSurname)
                 .collect(Collectors.toList());
     }
-    void sortByAge(List<Student> listOfStudents){
-        listOfStudents.stream()
-                .sorted(Comparator.comparing(Student::getBirthday)).toList()
-                .forEach(x-> System.out.println(x.getSurname() + " " + x.getName() ));
+
+    public List<Student> sortByAge(){
+        return studentGateway.getStudents().stream()
+                .sorted(Comparator.comparing(Student::getBirthday)).toList();
 
     }
-    void filterByGPA (List<Student> listOfStudents){
-        listOfStudents.stream()
+
+    public List<Student> filterByGPA (){
+        return studentGateway.getStudents().stream()
                 .filter(x->x.getGPA()>6)
-                .forEach(l-> System.out.println(l.getSurname() + " " + l.getName()));
+                .collect(Collectors.toList());
 
     }
-    void printBudgetFISE (List<Student> listOfStudents){
-        listOfStudents.stream().filter(x->x.getFaculty().equals("FISE")&&x.getType().equals("budget"))
-                .forEach(l-> System.out.println(l.getSurname() + " " + l.getName()));
+    public List<Student> printBudgetFISE (){
+        return studentGateway.getStudents().stream().
+                filter(x->x.getFaculty().equals("FISE") && x.getType().equals("budget"))
+                .collect(Collectors.toList());
     }
-    void filterBySurname (List<Student> listOfStudents){
-        listOfStudents.stream()
+    public List<Student> filterBySurname (){
+        return studentGateway.getStudents().stream()
                 .filter(x->x.getSurname().endsWith("a"))
-                .forEach(l-> System.out.println(l.getSurname()+ " "+ l.getName()));
+                .collect(Collectors.toList());
     }
 
 }

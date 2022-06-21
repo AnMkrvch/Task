@@ -1,12 +1,12 @@
 import java.io.File;
-import java.util.List;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        File file = new File("D:\\Angelina\\Documents\\IDEA\\Task\\src\\students.txt");
-        StudentGateway st = new StudentGateway();
-        List<Student> students = st.getStudents(st.readStudents(file));
+        File file = new File("src\\students.txt");
+
+        StudentService stFilter = new StudentService(file);
 
         System.out.println(" student service " +
                 "\n 1 - students of ef" +
@@ -20,37 +20,21 @@ public class Main {
         Scanner in = new Scanner(System.in);
         int k = in.nextInt();
 
-        StudentService stFilter = new StudentService();
-
-        switch(k){
-            case 1:
-                stFilter.printFacultyEF(students);
-                break;
-            case 2:
-                System.out.println(stFilter.findSurname(students));
-                break;
-            case 3:
-                stFilter.sortByAge(students);
-                break;
-            case 4:
-                stFilter.filterByGPA(students);
-                break;
-            case 5:
-                stFilter.printBudgetFISE(students);
-                break;
-            case 6:
-                stFilter.filterBySurname(students);
-                break;
-            default:
-                System.out.println("incorrect value");
+        if (k==1){
+            stFilter.printStudents(stFilter.findFacultyEF());
+        } else if (k==2){
+            System.out.println(stFilter.findSurname());
+        } else if (k==3){
+            stFilter.printStudents(stFilter.sortByAge());
+        } else if (k==4){
+            stFilter.printStudents(stFilter.filterByGPA());
+        } else if (k==5){
+            stFilter.printStudents(stFilter.printBudgetFISE()) ;
+        } else if (k==6){
+            stFilter.printStudents (stFilter.filterBySurname());
+        } else{
+            System.out.println("incorrect value");
         }
-
-//        stFilter.printFacultyEF(students);
-//        System.out.println(stFilter.findSurname(students));
-//        stFilter.sortByAge(students);
-//        stFilter.filterByGPA(students);
-//        stFilter.printBudgetFISE(students);
-//        stFilter.filterBySurname(students);
 
     }
 }
