@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StudentGateway {
-
-
     private final File file;
-
     public StudentGateway(File file) {
         this.file = file;
+    }
+
+    public List<Student> getStudents () {
+        return readStudents().stream().map(this::createStudent).collect(Collectors.toList());
     }
 
     private ArrayList <String> readStudents(){
@@ -26,12 +27,7 @@ public class StudentGateway {
         }
         return listOfData;
     }
-
-    public List<Student> getStudents () {
-        return readStudents().stream().map(this::createStudent).collect(Collectors.toList());
-    }
-
-   private Student createStudent ( String str ) {
+    private Student createStudent ( String str ) {
 
         String [] data = str.split(" ");
 
