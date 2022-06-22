@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StudentGateway {
-    private final File file;
-    public StudentGateway(File file) {
-        this.file = file;
+    private final String filePath;
+    public StudentGateway(String filePath) {
+        this.filePath = filePath;
     }
 
     public List<Student> getStudents () {
@@ -16,8 +16,8 @@ public class StudentGateway {
 
     private ArrayList <String> readStudents(){
         ArrayList<String> listOfData = new ArrayList<>();
-        try (FileReader read = new FileReader(file);
-            BufferedReader bread = new BufferedReader(read)) {
+        try (InputStream inputStream = getClass().getResourceAsStream(filePath);
+             BufferedReader bread = new BufferedReader(new InputStreamReader(inputStream))) {
             String str;
             while ((str = bread.readLine()) != null){
                 listOfData.add(str);
