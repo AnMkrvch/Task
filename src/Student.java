@@ -8,7 +8,7 @@ public class Student {
     private String patronymic;
     private LocalDate birthday;
     private String faculty;
-    private double GPA;
+    private double gpa;
     private String type;
 
     public void setName(String name) {
@@ -26,8 +26,8 @@ public class Student {
     public void setFaculty(String faculty) {
         this.faculty = faculty;
     }
-    public void setGPA(double GPA) {
-        this.GPA = GPA;
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
     }
     public void setType(String type) {
         this.type = type;
@@ -47,8 +47,8 @@ public class Student {
     public String getFaculty() {
         return faculty;
     }
-    public double getGPA() {
-        return GPA;
+    public double getGpa() {
+        return gpa;
     }
     public String getType() {
         return type;

@@ -39,7 +39,7 @@ public class StudentGateway {
         student.setBirthday(Utils.getDate(data[3]));
 
         student.setFaculty(data[4]);
-        student.setGPA(Double.parseDouble(data[5]));
+        student.setGpa(Double.parseDouble(data[5]));
         student.setType(data[6]);
 
         return student;
