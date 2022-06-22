@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 public class StudentService {
     private final StudentGateway studentGateway;
-    public StudentService (File file){
-        this.studentGateway = new StudentGateway(file);
+    public StudentService (String filePath){
+        this.studentGateway = new StudentGateway(filePath);
     }
 
     public List<Student> makeList(int k){
