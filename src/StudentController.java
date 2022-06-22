@@ -3,6 +3,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StudentController {
+
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
     public void printStudents(){
 
         System.out.println(" student service " +
@@ -16,9 +23,6 @@ public class StudentController {
 
         Scanner in = new Scanner(System.in);
         int k = in.nextInt();
-
-        File file = new File("src\\students.txt");
-        StudentService studentService = new StudentService(file);
 
         studentService.makeList(k).forEach(x -> System.out.println(x.getSurname() + " " + x.getName()));
 
