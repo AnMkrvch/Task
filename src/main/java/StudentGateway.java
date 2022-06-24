@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StudentGateway {
-    private final String filePath;
-    public StudentGateway(String filePath) {
+    private final  String filePath;
+    public StudentGateway( String filePath) {
         this.filePath = filePath;
     }
 
@@ -23,7 +23,7 @@ public class StudentGateway {
                 listOfData.add(str);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.getMessage();
         }
         return listOfData;
     }

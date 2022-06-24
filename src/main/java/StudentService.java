@@ -1,3 +1,9 @@
+
+
+
+
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.File;
 import java.util.Comparator;
 import java.util.List;
@@ -6,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class StudentService {
     private final StudentGateway studentGateway;
-    public StudentService (String filePath){
+    public StudentService ( String filePath){
         this.studentGateway = new StudentGateway(filePath);
     }
 
@@ -42,7 +48,7 @@ public class StudentService {
     }
     private List<Student> findByAge(){
         return studentGateway.getStudents().stream()
-                .sorted(Comparator.comparing(Student::getBirthday)).toList();
+                .sorted(Comparator.comparing(Student::getBirthday)).collect(Collectors.toList());
 
     }
     private List<Student> findByGpa (){
@@ -58,7 +64,11 @@ public class StudentService {
     }
     private List<Student> findBySurname (){
         return studentGateway.getStudents().stream()
-                .filter(x->x.getSurname().endsWith("a"))
+                .filter(x-> StringUtils.endsWith(x.getSurname(), "a"))
                 .collect(Collectors.toList());
+
+
     }
+
+
 }
